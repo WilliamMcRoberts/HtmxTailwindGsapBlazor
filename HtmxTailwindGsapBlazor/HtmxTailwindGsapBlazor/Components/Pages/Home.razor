@@ -6,7 +6,7 @@
 <PageTitle>Home</PageTitle>
 
 @* On Load Title Animation With Tailwind and Css *@
-<h1 class="font-bold opacity-0 -translate-x-[50px] ease-out text-4xl text-red-500 fill-forward slide-right">Home Page</h1>
+<h1 class="font-bold opacity-0 -translate-x-[50px] ease-out text-4xl text-red-500 fill-forward slide-right">Animation With Tailwind and CSS</h1>
 
 <br />
 
@@ -18,16 +18,19 @@
 
 <br />
 
+
+    <h1   class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl">Blazor OnInitialized Hook</h1>
 @* Traditional Api Call To Grab Data On Load (Used In Combination With The OnInitialized Hook) *@
 @foreach(var user in ApplicationUsers)
 {
-    <p class="slide-right fill-forward opacity-0 -translate-x-[50px]">@user.UserName</p>
+    <p style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Username: @user.UserName</p>
+    <p  style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Email: @user.Email</p>
 }
 
 <br/>
 
 @* Animation Triggered Using Intersection Observer From wwwroot/js/hooks.js *@
-<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Home Page</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
 
 @code {
     private List<ApplicationUser> ApplicationUsers { get; set; } = new ();
