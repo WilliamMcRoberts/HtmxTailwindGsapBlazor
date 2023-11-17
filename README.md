@@ -14,7 +14,7 @@ Template For .NET 8 Blazor Web App With HTMX for SSR interactivity, Tailwind for
 
   ```
 4. cd HtmxTailwindGsapBlazor/HtmxTailwindGsapBlazor
-5. create appsettings.json file with the following:
+5. in appsettings.json, provide your SQL connection string:
   ```
       {
         "ConnectionStrings": {
