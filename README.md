@@ -10,13 +10,13 @@ Template For .NET 8 Blazor Web App With HTMX for SSR interactivity, Tailwind for
 1. open terminal with command: git clone https://github.com/WilliamMcRoberts/HtmxTailwindGsapBlazor/
 2. cd HtmxTailwindGsapBlazor/HtmxTailwindGsapBlazor
 3. create appsettings.json file with the following:
-```
-    {
-      "ConnectionStrings": {
-       "DefaultConnection": "<YOUR_CONNECTION_STRING>",
+  ```
+      {
+        "ConnectionStrings": {
+         "DefaultConnection": "<YOUR_CONNECTION_STRING>",
+       }
      }
-   }
-```
+  ```
 4. open PM console with command: Update-Database
 5. enter command: dotnet run
 6. go to Register page and register
