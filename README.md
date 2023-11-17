@@ -13,8 +13,11 @@ Template For .NET 8 Blazor Web App With HTMX for SSR interactivity, Tailwind for
     git clone https://github.com/WilliamMcRoberts/HtmxTailwindGsapBlazor/
 
   ```
-4. cd HtmxTailwindGsapBlazor/HtmxTailwindGsapBlazor
-5. in appsettings.json, provide your SQL connection string:
+2. go to server project directory
+  ```
+    cd HtmxTailwindGsapBlazor/HtmxTailwindGsapBlazor/HtmxTailwindGsapBlazor
+  ```
+3. in appsettings.json, provide your SQL connection string:
   ```
       {
         "ConnectionStrings": {
@@ -26,10 +29,10 @@ Template For .NET 8 Blazor Web App With HTMX for SSR interactivity, Tailwind for
   ```
      Update-Database
   ```
-7. enter command:
+5. launch project:
   ```
     dotnet run
   ```
-9. go to Register page and register a name, email, and password
+9. navigate to the Register page and register a name, email, and password
 10. confirm
-11. go back to Home Page to see Htmx in action
+11. navigate back to the Home Page to see Htmx with SSR and Tailwind in action
