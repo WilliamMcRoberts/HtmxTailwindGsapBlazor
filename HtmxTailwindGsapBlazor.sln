@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34310.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmxTailwindGsapBlazor", "HtmxTailwindGsapBlazor\HtmxTailwindGsapBlazor\HtmxTailwindGsapBlazor.csproj", "{EA73F294-081F-4C8A-AB52-46B73D11DC5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmxTailwindGsapBlazor.Client", "HtmxTailwindGsapBlazor\HtmxTailwindGsapBlazor.Client\HtmxTailwindGsapBlazor.Client.csproj", "{DC4C1E77-E019-4609-8D12-B59E9C487FE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA73F294-081F-4C8A-AB52-46B73D11DC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA73F294-081F-4C8A-AB52-46B73D11DC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA73F294-081F-4C8A-AB52-46B73D11DC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA73F294-081F-4C8A-AB52-46B73D11DC5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4C1E77-E019-4609-8D12-B59E9C487FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4C1E77-E019-4609-8D12-B59E9C487FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4C1E77-E019-4609-8D12-B59E9C487FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4C1E77-E019-4609-8D12-B59E9C487FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82EB368B-0453-438B-82B0-53BD478BE1BE}
+	EndGlobalSection
+EndGlobal

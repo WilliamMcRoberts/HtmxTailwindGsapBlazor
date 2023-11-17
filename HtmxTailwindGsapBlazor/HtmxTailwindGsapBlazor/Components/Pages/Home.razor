@@ -1,0 +1,49 @@
+﻿@page "/"
+@using System.Timers
+@using HtmxTailwindGsapBlazor.Data
+@attribute [StreamRendering]
+
+<PageTitle>Home</PageTitle>
+
+@* On Load Title Animation With Tailwind and Css *@
+<h1 class="font-bold opacity-0 -translate-x-[50px] ease-out text-4xl text-red-500 fill-forward slide-right">Home Page</h1>
+
+<br />
+
+@* HTMX Call To Server To Load Data Triggered On Reveal With A "Loading State (Blue Background)"  *@
+<div>
+    <h1 hx-trigger="revealed" hx-get="/htmx/applicationUsers" data-loading-class="bg-blue-500 opacity-50"  hx-target="#users" class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl process">HTMX Trigger On Reveal</h1>
+</div>
+<div id="users"></div>
+
+<br />
+
+@* Traditional Api Call To Grab Data On Load (Used In Combination With The OnInitialized Hook) *@
+@foreach(var user in ApplicationUsers)
+{
+    <p class="slide-right fill-forward opacity-0 -translate-x-[50px]">@user.UserName</p>
+}
+
+<br/>
+
+@* Animation Triggered Using Intersection Observer From wwwroot/js/hooks.js *@
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Home Page</h1>
+
+@code {
+    private List<ApplicationUser> ApplicationUsers { get; set; } = new ();
+    HttpClient httpClient = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Getting Users");
+        try
+        {
+            var results = await httpClient.GetFromJsonAsync<List<ApplicationUser>>("https://localhost:7148/applicationUsers");
+            if(results is not null) ApplicationUsers = results;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}

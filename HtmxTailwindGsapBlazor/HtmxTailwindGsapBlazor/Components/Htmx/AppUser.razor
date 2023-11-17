@@ -1,0 +1,30 @@
+﻿@using HtmxTailwindGsapBlazor.Data
+@using HtmxTailwindGsapBlazor.Processors
+
+@if (UserList.Count > 0)
+{
+    @foreach (var user in UserList)
+    {
+        <p style="--anim-delay: @(UserList.IndexOf(user) * 100)ms;--anim-duration: 500ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">User Name: @user?.UserName</p>
+        <p style="--anim-delay: @(UserList.IndexOf(user) * 100)ms;--anim-duration: 500ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Email: @user?.Email</p>
+    }
+}
+
+@((MarkupString)markup)
+
+@code {
+    [Parameter]
+    public List<ApplicationUser> UserList { get; set; } = new();
+
+    private string markup = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        markup = UserList?.Count switch
+        {
+            0 => @"<p class=""slide-right"">No Users</p>",
+            1 => @"<p class=""slide-right"">One User</p>",
+            _ => @"<p class=""slide-right"">Many Users</p>", 
+        };
+    }
+}

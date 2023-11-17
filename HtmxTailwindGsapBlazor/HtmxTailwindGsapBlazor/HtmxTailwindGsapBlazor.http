@@ -1,0 +1,9 @@
+﻿@HtmxTailwindGsapBlazor_HostAddress = https://localhost:7148
+
+GET {{HtmxTailwindGsapBlazor_HostAddress}}/applicationUsers
+
+###
+
+GET {{HtmxTailwindGsapBlazor_HostAddress}}/htmx/applicationUsers
+
+###
