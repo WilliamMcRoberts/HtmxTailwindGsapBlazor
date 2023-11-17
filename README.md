@@ -1,5 +1,6 @@
 # HtmxTailwindGsapBlazor
 
+- Blazor
 - HTMX
 - TailwindCss
 - GSAP
