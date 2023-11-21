@@ -1,5 +1,6 @@
 ﻿using HtmxTailwindGsapBlazor.Data;
 using HtmxTailwindGsapBlazor.DataAccess;
+using LanguageExt.Common;
 
 namespace HtmxTailwindGsapBlazor.Repositories;
 
@@ -7,6 +8,6 @@ public class ApplicationUserRepository(ISqlConnection db) : IApplicationUserRepo
 {
     private readonly ISqlConnection _db = db;
 
-    public Task<IEnumerable<ApplicationUser>> GetApplicationUsers() =>
-        _db.LoadData<ApplicationUser, dynamic>("SELECT * FROM AspNetUsers", new { });
+    public async ValueTask<Result<IEnumerable<ApplicationUser>>> GetApplicationUsers() =>
+       await _db.LoadData<ApplicationUser, dynamic>("SELECT * FROM AspNetUsers", new { });
 }

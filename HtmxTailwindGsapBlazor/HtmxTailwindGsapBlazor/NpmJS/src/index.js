@@ -6,6 +6,9 @@
     to call a function from this file.
 */
 
+
+
+
 import  htmx from 'htmx.org';
 window.htmx = htmx;
 import { gsap } from "gsap/dist/gsap";

@@ -16,7 +16,6 @@ public static class Extensions
                 dict.Add(propertyDescripter.Name, obj);
             }
         }
-
         return dict;
     }
 }

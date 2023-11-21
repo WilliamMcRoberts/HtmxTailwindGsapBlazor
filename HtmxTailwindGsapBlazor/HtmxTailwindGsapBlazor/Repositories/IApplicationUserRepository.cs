@@ -1,9 +1,10 @@
 ﻿using HtmxTailwindGsapBlazor.Data;
+using LanguageExt.Common;
 
 namespace HtmxTailwindGsapBlazor.Repositories
 {
     public interface IApplicationUserRepository
     {
-        Task<IEnumerable<ApplicationUser>> GetApplicationUsers();
+        ValueTask<Result<IEnumerable<ApplicationUser>>> GetApplicationUsers();
     }
 }

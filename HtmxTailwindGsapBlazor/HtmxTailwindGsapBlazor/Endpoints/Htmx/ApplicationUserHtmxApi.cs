@@ -11,17 +11,12 @@ public static class ApplicationUserHtmxApi
         app.MapGet("/htmx/applicationUsers", GetApplicationUsers);
     }
 
-    private static async Task<IResult> GetApplicationUsers(IRender render, IApplicationUserRepository userRepo)
+    private static async Task<IResult> GetApplicationUsers(
+        IRender render, IApplicationUserRepository userRepo)
     {
-        try
-        {
-            var appUsers = await userRepo.GetApplicationUsers();
-            return render.Component<AppUser>(new { UserList = appUsers });
-        }
-        catch (Exception ex)
-        {
-            return Results.Problem(ex.Message);
-        }
+        var appUsers = await userRepo.GetApplicationUsers();
+        return appUsers.Match<IResult>(
+                 users => render.Component<AppUser>(new { UserList = users }),
+                 error => Results.Problem(error.Message));
     }
-
 }

@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HtmxTailwindGsapBlazor.Client\HtmxTailwindGsapBlazor.Client.csproj" />
     <PackageReference Include="Dapper" Version="2.1.21" />
+    <PackageReference Include="LanguageExt.Core" Version="4.4.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />

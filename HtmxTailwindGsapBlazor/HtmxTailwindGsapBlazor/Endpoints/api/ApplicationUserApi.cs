@@ -9,16 +9,11 @@ public static class ApplicationUserApi
         app.MapGet("/applicationUsers", GetApplicationUsers);
     }
 
-    private static async Task<IResult> GetApplicationUsers(IApplicationUserRepository userRepo)
+    private static async ValueTask<IResult> GetApplicationUsers(IApplicationUserRepository userRepo)
     {
-        try
-        {
-            var appUsers = await userRepo.GetApplicationUsers();
-            return Results.Ok(appUsers);
-        }
-        catch (Exception ex)
-        {
-            return Results.Problem(ex.Message);
-        }
+        var appUsers = await userRepo.GetApplicationUsers();
+        return appUsers.Match<IResult>(
+                 users => Results.Ok(users),
+                 error => Results.Problem(error.Message));
     }
 }

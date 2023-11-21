@@ -1,9 +1,15 @@
 ﻿@page "/"
+@inject IJSRuntime js
 @using System.Timers
 @using HtmxTailwindGsapBlazor.Data
+@using LanguageExt
+@using static LanguageExt.Prelude
+
 @attribute [StreamRendering]
 
 <PageTitle>Home</PageTitle>
+
+<h3  id="scroll">YO</h3>
 
 @* On Load Title Animation With Tailwind and Css *@
 <h1 class="font-bold opacity-0 -translate-x-[50px] ease-out text-4xl text-red-500 fill-forward slide-right">Animation With Tailwind and CSS</h1>
@@ -18,13 +24,16 @@
 
 <br />
 
+<h1 class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl">Blazor OnInitialized Hook</h1>
 
-    <h1   class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl">Blazor OnInitialized Hook</h1>
 @* Traditional Api Call To Grab Data On Load (Used In Combination With The OnInitialized Hook) *@
-@foreach(var user in ApplicationUsers)
+@if(ApplicationUsers.Count > 0)
 {
-    <p style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Username: @user.UserName</p>
-    <p  style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Email: @user.Email</p>
+    @foreach(var user in ApplicationUsers)
+    {
+        <p style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Username: @user.UserName</p>
+        <p  style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Email: @user.Email</p>
+    }
 }
 
 <br/>
@@ -35,10 +44,11 @@
 @code {
     private List<ApplicationUser> ApplicationUsers { get; set; } = new ();
     HttpClient httpClient = new();
+    int scroll = 0;
+    ElementReference sy;
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("Getting Users");
         try
         {
             var results = await httpClient.GetFromJsonAsync<List<ApplicationUser>>("https://localhost:7148/applicationUsers");
@@ -49,4 +59,37 @@
             Console.WriteLine(ex.Message);
         }
     }
+
+ 
 }
+
+@* On Load Title Animation With Tailwind and Css *@
+<h1 class="font-bold opacity-0 -translate-x-[50px] ease-out text-4xl text-red-500 fill-forward slide-right">Animation With Tailwind and CSS</h1>
+
+<br />
+
+@* HTMX Call To Server To Load Data Triggered On Reveal With A "Loading State (Blue Background)"  *@
+<div>
+    <h1 hx-trigger="revealed" hx-get="/htmx/applicationUsers" data-loading-class="bg-blue-500 opacity-50"  hx-target="#users" class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl process">HTMX Trigger On Reveal</h1>
+</div>
+<div id="users"></div>
+
+<br />
+
+<h1 class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl">Blazor OnInitialized Hook</h1>
+
+@* Traditional Api Call To Grab Data On Load (Used In Combination With The OnInitialized Hook) *@
+@if(ApplicationUsers.Count > 0)
+{
+    @foreach(var user in ApplicationUsers)
+    {
+        <p style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Username: @user.UserName</p>
+        <p  style="--anim-delay: @(ApplicationUsers.IndexOf(user) * 100)ms;" class="slide-right fill-forward opacity-0 -translate-x-[50px]">Email: @user.Email</p>
+    }
+}
+
+<br/>
+
+@* Animation Triggered Using Intersection Observer From wwwroot/js/hooks.js *@
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+
