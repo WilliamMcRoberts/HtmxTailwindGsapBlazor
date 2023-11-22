@@ -1,6 +1,6 @@
 {
   "../src/index.js": {
-    "file": "main.js",
+    "file": "main.bundle.js",
     "isEntry": true,
     "src": "../src/index.js"
   }

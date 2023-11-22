@@ -10,9 +10,9 @@ export default {
                 main: './src/index.js',
             },
             output: {
-                entryFileNames: '[name].js',
-                chunkFileNames: '[name].js',
-                assetFileNames: '[name].[ext]'
+                entryFileNames: '[name].bundle.js',
+                chunkFileNames: '[name].bundle.js',
+                assetFileNames: '[name].bundle.[ext]'
             }
         },
     },

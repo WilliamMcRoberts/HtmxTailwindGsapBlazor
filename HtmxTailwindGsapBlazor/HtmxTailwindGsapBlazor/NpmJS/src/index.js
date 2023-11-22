@@ -6,9 +6,6 @@
     to call a function from this file.
 */
 
-
-
-
 import  htmx from 'htmx.org';
 window.htmx = htmx;
 import { gsap } from "gsap/dist/gsap";
@@ -24,4 +21,5 @@ window.fly = (selector, { duration = .6, x = 0, y = 0, delay = 0, opacity = 1, e
         { opacity: 1, x: 0, y: 0, duration: duration, ease: ease, scrollTrigger: { trigger: el, start: "top bottom", stagger: stagger } }
     );
 }
+
 

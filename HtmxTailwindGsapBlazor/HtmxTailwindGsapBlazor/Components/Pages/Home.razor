@@ -4,10 +4,13 @@
 @using HtmxTailwindGsapBlazor.Data
 @using LanguageExt
 @using static LanguageExt.Prelude
+@using HtmxTailwindGsapBlazor.Components.Shared
 
 @attribute [StreamRendering]
 
 <PageTitle>Home</PageTitle>
+
+<BlazorPageScript Src="./Components/Pages/Home.razor.js"></BlazorPageScript>
 
 <h3  id="scroll">YO</h3>
 
@@ -18,7 +21,7 @@
 
 @* HTMX Call To Server To Load Data Triggered On Reveal With A "Loading State (Blue Background)"  *@
 <div>
-    <h1 hx-trigger="revealed" hx-get="/htmx/applicationUsers" data-loading-class="bg-blue-500 opacity-50"  hx-target="#users" class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl process">HTMX Trigger On Reveal</h1>
+    <h1 hx-trigger="revealed" hx-get="/htmx/applicationUsers" data-loading-class="bg-blue-500 opacity-50"  hx-target="#users" class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl process-home">HTMX Trigger On Reveal</h1>
 </div>
 <div id="users"></div>
 
@@ -70,7 +73,7 @@
 
 @* HTMX Call To Server To Load Data Triggered On Reveal With A "Loading State (Blue Background)"  *@
 <div>
-    <h1 hx-trigger="revealed" hx-get="/htmx/applicationUsers" data-loading-class="bg-blue-500 opacity-50"  hx-target="#users" class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl process">HTMX Trigger On Reveal</h1>
+    <h1 hx-trigger="revealed" hx-get="/htmx/applicationUsers" data-loading-class="bg-blue-500 opacity-50"  hx-target="#users" class="opacity-0 -translate-x-[50px] slide-right fill-forward font-bold text-xl process-home">HTMX Trigger On Reveal</h1>
 </div>
 <div id="users"></div>
 
@@ -91,5 +94,25 @@
 <br/>
 
 @* Animation Triggered Using Intersection Observer From wwwroot/js/hooks.js *@
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
+<h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
 <h1 class="observe-slide-right text-4xl -translate-x-[50px] opacity-0">Animation Using IntersectionObserver</h1>
 
