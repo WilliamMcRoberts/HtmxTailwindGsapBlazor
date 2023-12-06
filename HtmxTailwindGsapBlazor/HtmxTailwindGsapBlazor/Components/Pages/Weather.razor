@@ -4,13 +4,14 @@
 @* @rendermode InteractiveServer *@
 @using HtmxTailwindGsapBlazor.Components.Shared
 
+<BlazorPageScript Src="./Components/Pages/Weather.razor.js?weather"></BlazorPageScript>
 <PageTitle>Weather</PageTitle>
 
-<BlazorPageScript Src="./Components/Pages/Weather.razor.js"></BlazorPageScript>
 
-<h1 class="font-bold text-2xl opacity-0 -translate-x-[50px] text-green-700 fly-weather">Weather</h1>
+<h1 class="font-bold text-2xl opacity-0 -translate-x-[50px] text-green-700 anim-slide-right">Weather</h1>
 
-<p>This component demonstrates showing data.</p>
+<p >This component demonstrates showing data.</p>
+
 
 @if (forecasts == null)
 {

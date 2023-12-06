@@ -1,19 +1,14 @@
 
 // Hooks for Blazor Enhanced Load and htmx / use for IntersectionObserver animations
 
-//let el = document.getElementById('scroll');
 
 //window.onload = () => {
 //    console.log("window.onload() from hooks.js")
 //    animateSlideRight()
 //}
 
-//window.onscroll = () => {
-//    console.log("Scroll Y from hooks.js: ", window.scrollY);
-//    el.style.fontSize = `${window.scrollY}px`;
-//}
 
-export function animateSlideRight() {
+window.observeSlideRight = () => {
     const els = document.querySelectorAll(".observe-slide-right");
     if (!els || els.length < 1) return;
     const elArray = Array.from(els);
@@ -28,6 +23,16 @@ export function animateSlideRight() {
     elArray.forEach((el) => {
         observer.observe(el);
     })
+}
+
+window.animateSlideRight = () =>{
+    const animEls = document.querySelectorAll(".anim-slide-right");
+    if (!animEls || animEls.length < 1) return;
+    console.log("Els from Animate: ", animEls);
+    animEls.forEach((el) => {
+        console.log("el: ", el);
+        el.animate({ opacity: [0, 1], transform: ["translateX(-50px)", "translateX(0)"] }, { duration: 600, easing: 'ease-out', fill: 'forwards', delay: 0 })
+    });
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

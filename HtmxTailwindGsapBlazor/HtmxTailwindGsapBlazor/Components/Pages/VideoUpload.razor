@@ -1,0 +1,83 @@
+﻿@page "/video-upload"
+@rendermode InteractiveServer
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IConfiguration config
+@using HtmxTailwindGsapBlazor.Processors
+@using HtmxTailwindGsapBlazor.Models
+@inject IVideoFileProcessor videoFileProcessor
+@using LanguageExt.Common
+
+<h3>VideoUpload Page</h3>
+
+<EditForm Model="@InputFileModel" OnSubmit="@ProcessFile">
+    <InputFile OnChange="@LoadFile" />
+    <button
+        type="submit" 
+        class="rounded border border-green-800 text-green-800
+        bg-green-300 w-40 h-8 hover:bg-green-800 hover:text-white" 
+    >
+        Upload
+    </button>
+</EditForm>
+
+@if(errors.Count > 0)
+{
+    <h2>Errors</h2>
+    <ul class="p-2">
+        @foreach(var error in errors)
+        {
+            <li class="text-red-500">@error</li>
+        }
+    </ul>
+}
+
+@code {
+    public InputFileModel InputFileModel { get; set; } = new();
+    private long maxFileSize = 1024 * 1024 * 6;
+    private List<string> errors = new();
+    private string userId = string.Empty;
+
+    private async Task ProcessFile()
+    {
+        if (InputFileModel.File is null)
+        {
+            errors.Add($"The file you're attempting to upload does not exist.");
+            return;
+        }
+
+        var result = await videoFileProcessor.UploadFile(InputFileModel.File, userId);
+
+        result.Match(
+            _ => {
+                InputFileModel = new();
+                return true;
+            },
+            error => {
+                errors.Add(error.Message);
+                return false;
+            }
+        );
+    }
+
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        errors.Clear();
+
+        if(e.FileCount > 1)
+        {
+            errors.Add($"Error: You're attempting to upload {e.FileCount} files, " + 
+                            $"only {1} file is allowed.");
+            return;
+        }
+
+        InputFileModel.File = e.File;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider
+           .GetAuthenticationStateAsync();
+        var user = authState.User;
+        userId = user.Claims.FirstOrDefault(c => c.Type.Contains("nameidentifier"))?.Value!;
+    }
+}

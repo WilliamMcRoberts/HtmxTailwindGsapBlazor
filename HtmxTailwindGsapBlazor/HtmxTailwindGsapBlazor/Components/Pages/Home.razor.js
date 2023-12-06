@@ -1,19 +1,22 @@
-﻿import { animateSlideRight } from "/js/hooks.js"; 
+﻿//import {observeSlideRight, animateSlideRight } from '/js/hooks.js';
 
 export function onLoad() {
-    console.log("Loaded / Home...")
+    console.log("Loaded / Home...");
     animateSlideRight();
-    const els = document.querySelectorAll(".process-home");
-    els.forEach((el) => {
-        console.log("Processing onLoad / Home.razor.js", el.tagName)
-        htmx.process(el);
-    })
+    observeSlideRight();
+    let el = document.getElementById('scroll');
+    window.onscroll = () => {
+        console.log("Scroll Y from index.js: ", window.scrollY);
+        el.style.transform = `translateY(${window.scrollY * 1.15}px)`;
+    }
+
 }
 
 export function onUpdate() {
-    console.log("Updated / H...")
+    console.log("Updated / Home...");
 }
 
 export function onDispose() {
-    console.log("Disposed / Home...")
+    console.log("Disposed / Home...");
 }
+

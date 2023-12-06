@@ -4,6 +4,7 @@ using HtmxTailwindGsapBlazor.DataAccess;
 using HtmxTailwindGsapBlazor.Processors;
 using HtmxTailwindGsapBlazor.Repositories;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +16,24 @@ public static class RegisterServices
     {
 
         builder.Services.AddRazorComponents()
-        .AddInteractiveServerComponents()
+        .AddInteractiveServerComponents().AddHubOptions(options =>
+        {
+            options.MaximumReceiveMessageSize = 4000000000;
+        })
         .AddInteractiveWebAssemblyComponents();
+
+        builder.Services.AddCors(options => options.AddPolicy("CorsPolicy", policy =>
+        {
+            policy.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader();
+        }));
+
+        builder.Services.Configure<FormOptions>(options =>
+        {
+
+            options.ValueLengthLimit = int.MaxValue;
+            options.MultipartBodyLengthLimit = int.MaxValue;
+            options.MultipartHeadersLengthLimit = int.MaxValue;
+        });
 
         builder.Services.AddCascadingAuthenticationState();
         builder.Services.AddScoped<IdentityUserAccessor>();
@@ -44,5 +61,8 @@ public static class RegisterServices
         builder.Services.AddSingleton<IRender, Render>();
         builder.Services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
         builder.Services.AddSingleton<ISqlConnection, SqlConnection>();
+        builder.Services.AddScoped<IVideoFileProcessor, VideoFileProcessor>();
+
+
     }
 }
